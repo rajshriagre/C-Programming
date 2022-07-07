@@ -1,58 +1,56 @@
+
 #include<stdio.h>
 #include<stdlib.h>
 
-//Function Name : LastOccu
-//Description   : Used to calculate index of first occurance of given number 
-//Input         : Integer,Integer Arraya,Integer
+//Function Name :Difference
+//Description   : Used to calculate difference between summation of even digit and summation of odd digit.
+//Input         : Integer,Integer Arrays
 //Output        : Integer
 //Date          : 07/05/2022
 //Author        : Rajshri Popat Agre
 //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
-int  LastOccu(int Arr[], int iLength, int iNo)
+int CountAddition(int Arr[], int iLength)
 {
-    int iCnt = 0;
+    int iCnt = 0, iEvenAddition = 0, iOddAddition=0, iDifference=0;
 
-    for(iCnt = (iLength-1); iCnt >=0 ; iCnt--)
+    for(iCnt = 0; iCnt < iLength ; iCnt++)
     {
-		if(Arr[iCnt] == iNo)
+		if(Arr[iCnt] %2 == 0)
 		{
-         return iCnt;
+         iEvenAddition = iEvenAddition + Arr[iCnt];
 		}
     }
-	
-	
-	
+	for(iCnt = 0; iCnt < iLength ; iCnt++)
+    {
+		if(Arr[iCnt] %2 != 0)
+		{
+         iOddAddition = iOddAddition + Arr[iCnt];
+		}
+    }
+      return iDifference = (iEvenAddition - iOddAddition);
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Accept N number from user and accept one another number as No return index of first occurrence of that No
+//Accept N number from user and return difference between summation of even elements and summation of odd elements
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 int main()
 {
-    int iSize = 0, iCnt = 0, iValue = 0;
-	int iRet = 0;
+    int iSize = 0, iCnt = 0, iRet = 0;
     int *ptr = NULL;
 
     printf("Enter number of elements : \n");
     scanf("%d",&iSize);
-	
-	printf("Enter another number : \n");
-    scanf("%d",&iValue);
 
     ptr = (int *)malloc(iSize * sizeof(int));
 
     printf("Enter the values of array : \n");
-	
     for(iCnt = 0; iCnt < iSize; iCnt++)
     {
         scanf("%d",&ptr[iCnt]);
     }
 
-    iRet = LastOccu(ptr, iSize,iValue);
-	
-	printf(" Last occuerence Index is:%d\n",iRet);
-	
-
+    iRet = CountAddition(ptr, iSize);
+    printf("Addition of given Number are : %d\n",iRet);
     free(ptr);
     return 0;
 }

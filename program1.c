@@ -1,44 +1,68 @@
-//copmlete below code snippets
-
 #include<stdio.h>
+#include<stdlib.h>
+#define TRUE 1
+#define FALSE 0
+typedef int BOOL;
 
-//////////////////////////////////////////////////////
+//Function Name :Display
+//Description   : Used to cheak whether given numbers contain 11 in it or not. 
+//Input         : Integer,Integer Arraya
+//Output        : Boolean
+//Date          : 07/05/2022
+//Author        : Rajshri Popat Agre
 //
-//Function Name : Divide
-//Description :   Used to perform division of 2 number
-//Input :         Integer ,Integer
-//Output :        Integer
-//Date :          19/04/2022
-//Author :        Rajshri Popat Agre
-//
-///////////////////////////////////////////////////////
-
-int Divide(int iNo1, int iNo2)
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+BOOL Cheak(int Arr[], int iLength, int iNo)
 {
-	int iAns = 0;
-	
-	if(iNo2 < 0)
-	{
-		return -1;
-		
-	}
-	iAns = iNo1/iNo2;
-	
-	return iAns;
-}
+    int iCnt = 0;
 
- //////////////////////////////////////////////////////
- //write a program to perform division of 2 number.
- //////////////////////////////////////////////////////
- 
+    for(iCnt = 0; iCnt < iLength ; iCnt++)
+    {
+		if(Arr[iCnt] == iNo)
+		{
+         return TRUE;
+		}
+    }
+	return FALSE;
+	
+	
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Accept N number from user and accept one another number as No cheak whether NO is present or not..
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 int main()
 {
-    int iValue1 = 15;
-	int iValue2 = 5;
-	int iRet = 0;
-	
-	iRet = Divide(iValue1,iValue2);
-	printf("Division is : %d\n",iRet);              //Division is 3
+    int iSize = 0, iCnt = 0, iValue = 0;
+	BOOL bRet = FALSE;
+    int *ptr = NULL;
 
-	return 0;
+    printf("Enter number of elements : \n");
+    scanf("%d",&iSize);
+	
+	printf("Enter another number : \n");
+    scanf("%d",&iValue);
+
+    ptr = (int *)malloc(iSize * sizeof(int));
+
+    printf("Enter the values of array : \n");
+	
+    for(iCnt = 0; iCnt < iSize; iCnt++)
+    {
+        scanf("%d",&ptr[iCnt]);
+    }
+
+    bRet = Cheak(ptr, iSize,iValue);
+	
+	if(bRet == TRUE)
+	{
+	printf("number is present\n");
+	}
+	
+	else
+	{
+		printf("number is not present\n");
+	}
+
+    free(ptr);
+    return 0;
 }

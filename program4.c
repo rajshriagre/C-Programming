@@ -1,54 +1,57 @@
-
 #include<stdio.h>
-typedef int BOOL;
-#define TRUE 1
-#define FALSE 0
+#include<stdlib.h>
 
-//////////////////////////////////////////////////////
-//
-//Function Name : Display
-//Description   : Used to perform display 5 to 1 unmber      
-//Input         : Integer
-//Output        : Integer
-//Date          : 19/04/2022
+//Function Name :Renge
+//Description   : Used to Display elements of given Renge of values.
+//Input         : Integer,Integer Arraya,Integer,Integer
+//Date          : 08/05/2022
 //Author        : Rajshri Popat Agre
 //
-///////////////////////////////////////////////////////
-
-int Cheak(int iNO)
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+void Renge(int Arr[], int iLength, int iNo1, int iNo2)
 {
-	if((iNO % 5)==0)
-	{
-		return TRUE;
-	}
-	else
-	{
-		return FALSE;
-	}	
-}
+    int iCnt = 0;
 
- //////////////////////////////////////////////////////////////
-// Accept one number & cheak whether it is divisible by 5 or not
- //////////////////////////////////////////////////////////////
- 
+    for(iCnt = 0; iCnt < iLength ; iCnt++)
+    {
+		if((Arr[iCnt] > iNo1)&&(Arr[iCnt]<iNo2))
+		{
+         printf("number is %d\n",Arr[iCnt]);
+		}
+    }
+	
+	
+	
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Accept N number from user and accept Renge,Display all elements from that Renge.
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 int main()
 {
-	int iValue = 0;
-	BOOL bRet = FALSE;
-	
-	printf("Enter number\n");
-	scanf("%d",&iValue);
-	
-	bRet = Cheak(iValue);
-	
-	if(bRet==TRUE)
-	{
-		printf("Divisible");
-	}
-	else
-	{
-		printf("Not Divisible by 5");
-	}
+    int iSize = 0, iCnt = 0, iValue1 = 0,  iValue2 = 0;
+	int iRet = 0;
+    int *ptr = NULL;
 
-	return 0;
+    printf("Enter number of elements : \n");
+    scanf("%d",&iSize);
+	
+	printf("Enter starting point : \n");
+    scanf("%d",&iValue1);
+	
+	printf("Enter ending point : \n");
+    scanf("%d",&iValue2);
+
+    ptr = (int *)malloc(iSize * sizeof(int));
+
+    printf("Enter the values of array : \n");
+	
+    for(iCnt = 0; iCnt < iSize; iCnt++)
+    {
+        scanf("%d",&ptr[iCnt]);
+    }
+
+    iRet = Renge(ptr, iSize,iValue1,iValue2);
+	
+    free(ptr);
+    return 0;
 }

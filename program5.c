@@ -1,37 +1,53 @@
 #include<stdio.h>
+#include<stdlib.h>
 
-//////////////////////////////////////////////////////
-//
-//Function Name : Accept
-//Description   : Used to perform display "*" 
-//Input         : Integer
-//output        : Integer
-//Date          : 20/04/2022
+//Function Name :Product
+//Description   : Used to calculate product of all the odd number.
+//Input         : Integer,Integer Arraya,Integer,Integer
+//Date          : 08/05/2022
 //Author        : Rajshri Popat Agre
 //
-///////////////////////////////////////////////////////
-
-int Accept(int iNo)
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+int Product(int Arr[], int iLength)
 {
-	int iCnt = 0;
+    int iCnt = 0, iProduct = 1;
+
+    for(iCnt = 0; iCnt < iLength ; iCnt++)
+    {
+		if((Arr[iCnt] % 2)!= 0)
+		{
+         iProduct = iProduct * Arr[iCnt];
+		}
+    }
 	
-	for(iCnt = 1; iCnt <= iNo ; iCnt++)
-	{
-		printf("*\n");
-	}
+	return iProduct;
 	
 }
-
- //////////////////////////////////////////////////////////////////
- //Accept one number from user and print that number of * on scrren
- //////////////////////////////////////////////////////////////////
- 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Accept N number from user and return product of all the odd number.
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 int main()
 {
-	int iValue = 0;
-	iValue = 5;
-	
-    Accept(iValue);
+    int iSize = 0, iCnt = 0;
+	int iRet = 0;
+    int *ptr = NULL;
 
-	return 0;
+    printf("Enter number of elements : \n");
+    scanf("%d",&iSize);
+	
+    ptr = (int *)malloc(iSize * sizeof(int));
+
+    printf("Enter the values of array : \n");
+	
+    for(iCnt = 0; iCnt < iSize; iCnt++)
+    {
+        scanf("%d",&ptr[iCnt]);
+    }
+
+    iRet = Product(ptr, iSize);
+	
+	printf("product of odd element is:%d\n",iRet);
+	
+    free(ptr);
+    return 0;
 }
